@@ -15,6 +15,7 @@ function dealer(){
   this.score = 0;
 }
 
+
 //validate ace value
 function aceValid(cardDealt){
   while(cardDealt === 'ace'){
@@ -35,3 +36,10 @@ function sumArr(arr){ //sums up an array
   }
   return(ttl);
 }
+// save to local storage function
+function saveData(key, data){
+  localStorage.setItem(key, JSON.stringify(data));
+}
+
+// saves user name to local storage
+saveData('name', playerArr[0].name)
