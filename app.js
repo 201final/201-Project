@@ -13,21 +13,28 @@ function Dealer(){
   this.score = 12;
 }
 
-var dealer = new dealer();
+var dealer = new Dealer();
 var player = new NewPlayer('will');
 
 //validate ace value. Card dealt needs to pass through this before being rendered.
 function aceValid(cardDealt, indiv){
-  while(cardDealt === 'ace'){
+  while(cardDealt.name === 'ace'){
     if(indiv.score >= 11){
-      cardDealt = 1;
+      cardDealt.value = 1;
     }else{
-      cardDealt = 11;
+      cardDealt.value = 11;
     }
     console.log(cardDealt)
     console.log(indiv)
   }return(cardDealt)
 }
+// pushes card to ttl and hand arr
+function pushHand (playerOrDealer){
+  aceValid().push(playerOrDealer.score);
+  aceValid().push(playerOrDealer.hand);
+  
+}
+
 
 // checks ea hand to see if they have 21
 function check21(playerOrDealer){
@@ -68,7 +75,7 @@ function render (elementId, cardImg){
   
   document.getElementById(elementId).appendChild(renderCard) 
 }
-
+// action for dealers turn
 function dealerTurn(){
   while(check21('Dealer') === false){
     render('dealerCard', pushHand())
