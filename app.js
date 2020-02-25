@@ -12,10 +12,6 @@ function Dealer(){
   this.score = 0;
 }
 
-function Deck(){
-  this.DeckCards = [];
-}
-// TBD: are we going to have deck.getCard and/or deck.addCard (basically a deckCards.push)
 
 /*
 Author: Iris
