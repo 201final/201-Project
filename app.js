@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 function NewPlayer(name) {
   this.name = name;
@@ -7,7 +7,18 @@ function NewPlayer(name) {
   this.bet = 0;
 }
 
-function dealer(){
+function Dealer(){
   this.hand = [];
   this.score = 0;
+}
+
+
+/*
+Author: Iris
+This function displays a prompt asking to user if he wants to play.
+Functions returns: boolean.
+*/
+function askUserIfWantsToPlay()
+{
+  return( confirm('Hi there! \n Do you want to play BlackJack?'));
 }
