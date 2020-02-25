@@ -16,7 +16,7 @@ function dealer(){
 }
 
 
-//validate ace value
+//validate ace value. Card dealt needs to pass through this before being rendered.
 function aceValid(cardDealt){
   while(cardDealt === 'ace'){
     if(sumArr(playerArr[0].hand) >= 11){
@@ -27,7 +27,19 @@ function aceValid(cardDealt){
   }return(cardDealt)
 }
 
-function sumArr(arr){ //sums up an array
+// checks ea hand to see if they have 21
+card.prototype.check21 = function (){
+  if(sumArr(this.hand) > 21){
+    displayResults(`${this.name} has lost`); // this function needs to be created still with a message parameter
+  } else if(sumArr(this.hand) === 21){
+    displayResults(`${this.name} just hit 21!`);
+  } else{
+    return(renderTtl(sumArr(this.hand))); // need render total function to return to the DOM.
+  } 
+}
+
+//sums up an arrays
+function sumArr(arr){ 
   var i = 0;
   var ttl = 0;
   while (i < arr.length){
