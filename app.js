@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 // builds new player object
 function NewPlayer(name) {
@@ -8,7 +8,7 @@ function NewPlayer(name) {
   this.bet = 0;
 }
 
-function dealer(){
+function Dealer(){
   this.hand = [];
   this.score = 12;
 }
@@ -71,4 +71,12 @@ function render (elementId, cardImg){
   document.getElementById(elementId).appendChild(renderCard) 
 }
 
-
+/*
+Author: Iris
+This function displays a prompt asking to user if he wants to play.
+Functions returns: boolean.
+*/
+function askUserIfWantsToPlay()
+{
+  return( confirm('Hi there! \n Do you want to play BlackJack?'));
+}
