@@ -1,4 +1,4 @@
-'strict'
+'use strict'
 
 function NewPlayer(name) {
   this.name = name;
@@ -7,3 +7,7 @@ function NewPlayer(name) {
   this.bet = 0;
 }
 
+function dealer(){
+  this.hand = [];
+  this.score = 0;
+}
