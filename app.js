@@ -30,15 +30,13 @@ function aceValid(cardDealt, indiv){
 }
 
 // checks ea hand to see if they have 21
-card.prototype.check21 = function (playerOrDealer){
-  aceValid(cardDealt, playerOrDealer);
-
-  if(this.score > 21){
-    displayResults(`${this.name} has lost`); // this function needs to be created still with a message parameter
-  } else if(sumArr(this.score) === 21){
-    displayResults(`${this.name} just hit 21!`);
+function check21(playerOrDealer){
+  if(playerOrDealer.score > 21){
+    displayResults(`${playerOrDealer.name} has lost`); // playerOrDealer function needs to be created still with a message parameter
+  } else if(playerOrDealer.score === 21){
+    displayResults(`${playerOrDealer.name} just hit 21!`);
   } else{
-    return(renderTtl(this.hand)); // need render total function to return to the DOM.
+    return(false); 
   } 
 }
 
@@ -69,6 +67,12 @@ function render (elementId, cardImg){
   renderCard.alt = cardImg.name
   
   document.getElementById(elementId).appendChild(renderCard) 
+}
+
+function dealerTurn(){
+  while(check21('Dealer') === false){
+    render('dealerCard', pushHand())
+  }
 }
 
 /*
