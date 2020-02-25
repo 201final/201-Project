@@ -3,29 +3,105 @@ body{
 }
 
 h1{
+  position:static;
   text-align: center;
+  font-size:100px;
+  margin-left: auto;
+    margin-right: auto;
 }
 
 #chipsLeft{
-  position: relative;
-  width:200px;
+  position: absolute; left: 0%;
+  width:400px;
   
 }
 
 #chipsRight{
-  width:200px;
+  position: absolute; right: 0%;
+  width:400px;
 
+}
+#secOne{
+position: relative;
+margin-bottom: -550px;
 }
 
 #deckImg{
   width:500px;
-  height300px;
+  margin-top: 300px;
+  background-image: none;
 }
 
-#dealerCard1{}
+#buttonHit{
+  position:relative;
+  outline: none;
+  top: -750px;
+  left: 29px;
+  width: 425px;
+  height: 250px;
+  background-color: transparent;
+  /* border: none; */
+  -ms-transform: skewX(-20deg);
+  -webkit-transform: skewX(-20deg);
+  transform: skewX(-20deg);
+  -webkit-transform: rotate(20deg); 
+  transform: rotate(20deg);
+}
 
-#dealerCard2{}
+figure{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  padding-left: 275px;
+  position: relative;
+  top: -500px;
+}
+#dealerCard1{
+ padding-left: 5px;
+ padding-right: 10px;
+ height:auto;
+}
 
-#imgCardOne{}
+#dealerCard2{
+  padding-left: 10px;
+  padding-right: 10px;
+  height:auto;
+}
 
-#imgCardTwo{}
+/* #secTwo{
+} */
+
+h2{
+  text-align: center;
+}
+
+#userHand{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  padding-left: 275px;
+  position: relative;
+}
+
+#imgCardOne{
+  padding-left: 5px;
+  padding-right: 10px;
+}
+
+#imgCardTwo{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#secThree{
+}
+
+#buttonStay{
+  display: block;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
