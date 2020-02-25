@@ -1,0 +1,31 @@
+body{
+  background-color: green;
+}
+
+h1{
+  text-align: center;
+}
+
+#chipsLeft{
+  position: relative;
+  width:200px;
+  
+}
+
+#chipsRight{
+  width:200px;
+
+}
+
+#deckImg{
+  width:500px;
+  height300px;
+}
+
+#dealerCard1{}
+
+#dealerCard2{}
+
+#imgCardOne{}
+
+#imgCardTwo{}
