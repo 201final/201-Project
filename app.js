@@ -1,16 +1,22 @@
-'use strict';
+'use strict'
 
+// builds new player object
 function NewPlayer(name) {
   this.name = name;
   this.hand = [];
-  this.score = 0;
+  this.score = 15;
   this.bet = 0;
 }
 
+
 function NewDealer(){
+
   this.hand = [];
-  this.score = 0;
+  this.score = 12;
 }
+
+var dealer = new dealer();
+var player = new NewPlayer('will');
 
 
 /*
@@ -78,3 +84,94 @@ function getCard()
 var dealer = new NewDealer(); // this is a global variable
 var player = new NewPlayer(); // this is a global variable
 var totalCardsDealt = 0 //to know how many cards already have been dealt. TODO: reset to 0 when start game
+
+//validate ace value. Card dealt needs to pass through this before being rendered.
+function aceValid(cardDealt, indiv){
+  while(cardDealt === 'ace'){
+    if(indiv.score >= 11){
+      cardDealt = 1;
+    }else{
+      cardDealt = 11;
+    }
+    console.log(cardDealt)
+    console.log(indiv)
+  }return(cardDealt)
+}
+
+// checks ea hand to see if they have 21
+card.prototype.check21 = function (playerOrDealer){
+  aceValid(cardDealt, playerOrDealer);
+
+  if(this.score > 21){
+    displayResults(`${this.name} has lost`); // this function needs to be created still with a message parameter
+  } else if(sumArr(this.score) === 21){
+    displayResults(`${this.name} just hit 21!`);
+  } else{
+    return(renderTtl(this.hand)); // need render total function to return to the DOM.
+  } 
+}
+
+// sums up an arrays
+function sumArr(arr){ 
+  var i = 0;
+  var ttl = 0;
+  while (i < arr.length){
+    ttl = ttl + arr[i];
+    i++;
+  }
+  return(ttl);
+}
+// save to local storage function
+function saveData(key, data){
+  localStorage.setItem(key, JSON.stringify(data));
+}
+
+// saves user name to local storage
+saveData('name', player.name)
+
+//imgCardOne
+// render function. elementId has to be a string of playerCard or dealerCard.
+function render (elementId, cardImg){
+  
+  var renderCard = document.createElement('img');
+  
+  renderCard.src = cardImg.imgPath
+  renderCard.alt = cardImg.name
+  
+  document.getElementById(elementId).appendChild(renderCard)
+  
+}
+
+
+  document.getElementById("buttonHit").addEventListener("click", hitButton(event));
+
+  document.getElementById("buttonStay").addEventListener("click", stayButton(event));
+
+  
+  function hitButton() {
+    player.getCard();
+    if(NewPlayer.score > 21) {
+      gameResult();
+    }
+    else if(NewPlayer.score === 21) {
+      hitButton.disabled = true;
+      standButton.disabled = true;
+      gameResult();
+    }
+  }
+
+  function stayButton() {
+    dealerTurn();
+    hitButton.disabled = true;
+    standButton.disabled = true;
+  }
+
+  function results() {
+    if (dealer.score > player.score === true) {
+      alert( 'The Dealer wins')
+    }
+    else if(dealer.score < player.score === true) {
+        alert('You Win!');
+  }
+}
+
