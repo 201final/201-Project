@@ -9,29 +9,31 @@
 <body>
   <header>
     <img id="chipsLeft" src="svg-cards/simple/59-594947_stacks-of-poker-chips-png-poker-chips-transparent.png" alt="cL">
-    <h1>Blackjack Game</h1>
     <img id="chipsRight" src="svg-cards/simple/59-594947_stacks-of-poker-chips-png-poker-chips-transparent.png" alt="cR">
+    <h1>Blackjack Game</h1>
   </header>
   <main>
-    <section>
+    <section id="secOne">
       <img id="deckImg" src="svg-cards/simple/cards_PNG8474.png" alt="dI">
-      <button id="buttonHit"type="submit">Hit</button>
       <figure>
         <img id="dealerCard1" src="svg-cards/queen_of_diamonds.svg" alt="">
         <img id="dealerCard2" src="svg-cards/queen_of_diamonds.svg" alt="">
       </figure>
+      <button id="buttonHit"type="submit">Hit</button>
     </section>
     <section>
       <!-- empty for now, maybe bets 
       The queen of diamonds are place holders just do I can put them in our agreed place-->
     </section>
-    <section>
+    <section id="secTwo">
       <h2>Your Cards</h2>
       <h2>Users Name</h2>
+      <div id="userHand">
       <img id="imgCardOne"src="svg-cards/queen_of_diamonds.svg" alt="">
       <img id="imgCardTwo"src="svg-cards/queen_of_diamonds.svg" alt="">
+    </div>
     </section>
-    <section>
+    <section is="secThree">
       <button id="buttonStay" type="submit">Stay</button>
     </section>
 </main>
