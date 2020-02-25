@@ -4,7 +4,7 @@ var playerArr = [];
 // builds new player object
 function NewPlayer(name) {
   this.name = name;
-  this.hand = [1, 14];
+  this.hand = [];
   this.score = 0;
   this.bet = 0;
   playerArr.push(this)
