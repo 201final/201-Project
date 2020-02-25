@@ -1,4 +1,4 @@
-'use strict';
+
 
 var deck = []; 
 
@@ -64,3 +64,4 @@ var kingOfDiamonds = new Card(10, 'Diamonds', 'King', 'svg-cards\king_of_diamond
 var kingOfClubs = new Card(10, 'Clubs', 'King', 'svg-cards\king_of_clubs.svg');
 
 
+console.log(sixOfClubs);
