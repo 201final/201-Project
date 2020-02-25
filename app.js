@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 // builds new player object
 function NewPlayer(name) {
@@ -8,7 +8,7 @@ function NewPlayer(name) {
   this.bet = 0;
 }
 
-function Dealer(){
+function dealer(){
   this.hand = [];
   this.score = 12;
 }
@@ -74,12 +74,34 @@ function render (elementId, cardImg){
 }
 
 
-/*
-Author: Iris
-This function displays a prompt asking to user if he wants to play.
-Functions returns: boolean.
-*/
-function askUserIfWantsToPlay()
-{
-  return( confirm('Hi there! \n Do you want to play BlackJack?'));
+  document.getElementById("buttonHit").addEventListener("click", hitButton(event));
+
+  document.getElementById("buttonStay").addEventListener("click", stayButton(event));
+
+  
+  function hitButton() {
+    player.getCard();
+    if(NewPlayer.score > 21) {
+      gameResult();
+    }
+    else if(NewPlayer.score === 21) {
+      hitButton.disabled = true;
+      standButton.disabled = true;
+      gameResult();
+    }
+  }
+
+  function stayButton() {
+    dealerTurn();
+    hitButton.disabled = true;
+    standButton.disabled = true;
+  }
+
+  function results() {
+    if (dealer.score > player.score === true) {
+      alert( 'The Dealer wins')
+    }
+    else if(dealer.score < player.score === true) {
+        alert('You Win!');
+  }
 }
