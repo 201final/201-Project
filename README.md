@@ -49,3 +49,13 @@
 11. Prompt for rematch.
 
 
+![prep work](prep-img/20200224_135149.jpg)
+
+![prep work](prep-img/20200224_135201.jpg)
+
+![prep work](prep-img/20200224_135211.jpg)
+
+![prep work](prep-img/20200224_135228.jpg)
+
+## Final Domain Model
+![Domain model](prep-img/20200224_151620.jpg)
