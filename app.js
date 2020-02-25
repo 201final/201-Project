@@ -15,7 +15,7 @@ function NewDealer(){
   this.score = 12;
 }
 
-var dealer = new dealer();
+var dealer = new Dealer();
 var player = new NewPlayer('will');
 
 
@@ -87,27 +87,32 @@ var totalCardsDealt = 0 //to know how many cards already have been dealt. TODO: 
 
 //validate ace value. Card dealt needs to pass through this before being rendered.
 function aceValid(cardDealt, indiv){
-  while(cardDealt === 'ace'){
+  while(cardDealt.name === 'ace'){
     if(indiv.score >= 11){
-      cardDealt = 1;
+      cardDealt.value = 1;
     }else{
-      cardDealt = 11;
+      cardDealt.value = 11;
     }
     console.log(cardDealt)
     console.log(indiv)
   }return(cardDealt)
 }
+// pushes card to ttl and hand arr
+function pushHand (playerOrDealer){
+  aceValid().push(playerOrDealer.score);
+  aceValid().push(playerOrDealer.hand);
+  
+}
+
 
 // checks ea hand to see if they have 21
-card.prototype.check21 = function (playerOrDealer){
-  aceValid(cardDealt, playerOrDealer);
-
-  if(this.score > 21){
-    displayResults(`${this.name} has lost`); // this function needs to be created still with a message parameter
-  } else if(sumArr(this.score) === 21){
-    displayResults(`${this.name} just hit 21!`);
+function check21(playerOrDealer){
+  if(playerOrDealer.score > 21){
+    displayResults(`${playerOrDealer.name} has lost`); // playerOrDealer function needs to be created still with a message parameter
+  } else if(playerOrDealer.score === 21){
+    displayResults(`${playerOrDealer.name} just hit 21!`);
   } else{
-    return(renderTtl(this.hand)); // need render total function to return to the DOM.
+    return(false); 
   } 
 }
 
@@ -129,7 +134,6 @@ function saveData(key, data){
 // saves user name to local storage
 saveData('name', player.name)
 
-//imgCardOne
 // render function. elementId has to be a string of playerCard or dealerCard.
 function render (elementId, cardImg){
   
@@ -138,8 +142,13 @@ function render (elementId, cardImg){
   renderCard.src = cardImg.imgPath
   renderCard.alt = cardImg.name
   
-  document.getElementById(elementId).appendChild(renderCard)
-  
+  document.getElementById(elementId).appendChild(renderCard) 
+}
+// action for dealers turn
+function dealerTurn(){
+  while(check21('Dealer') === false){
+    render('dealerCard', pushHand())
+  }
 }
 
 
