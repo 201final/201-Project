@@ -13,8 +13,9 @@ function Dealer(){
 }
 
 function Deck(){
-  this.gameDeck = [];
+  this.DeckCards = [];
 }
+// TBD: are we going to have deck.getCard and/or deck.addCard (basically a deckCards.push)
 
 /*
 Author: Iris
