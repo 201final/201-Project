@@ -60,7 +60,6 @@ function saveData(key, data){
 // saves user name to local storage
 saveData('name', player.name)
 
-//imgCardOne
 // render function. elementId has to be a string of playerCard or dealerCard.
 function render (elementId, cardImg){
   
@@ -69,6 +68,7 @@ function render (elementId, cardImg){
   renderCard.src = cardImg.imgPath
   renderCard.alt = cardImg.name
   
-  document.getElementById(elementId).appendChild(renderCard)
-  
+  document.getElementById(elementId).appendChild(renderCard) 
 }
+
+
