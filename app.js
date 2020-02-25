@@ -1,6 +1,8 @@
 'use strict'
-
+// global variables
 var playerArr = [];
+
+
 // builds new player object
 function NewPlayer(name) {
   this.name = name;
