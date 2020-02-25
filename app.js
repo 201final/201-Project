@@ -184,3 +184,9 @@ function dealerTurn(){
   }
 }
 
+var playAgain = confirm('Would You Like To Play Again?');
+if (playAgain == true) {
+  //start game function
+} else {
+    alert('Bye Bye!')
+}
