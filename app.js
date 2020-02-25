@@ -4,7 +4,7 @@
 function NewPlayer(name) {
   this.name = name;
   this.hand = [];
-  this.score = 15;
+  this.score = 0;
   this.bet = 0;
 }
 
@@ -12,12 +12,17 @@ function NewPlayer(name) {
 function NewDealer(){
 
   this.hand = [];
-  this.score = 12;
+  this.score = 0;
 }
 
-var dealer = new Dealer();
-var player = new NewPlayer('will');
-
+function startGame(){
+  var dealer = new NewDealer();
+  var player =  new NewPlayer(getName());
+   pushHand(player);
+   
+   
+}
+startGame();
 
 /*
 Author: Iris
@@ -27,14 +32,17 @@ Returns: boolean.
 function askUserIfWantsToPlay()
 {
   return( confirm('Hi there! \n Do you want to play BlackJack?'));
+  // needs to start game function
 }
+askUserIfWantsToPlay();
 
-
-function getRandomNumber(TopNumber)
-{
+function getRandomNumber(TopNumber){
   return(Math.floor(Math.random() * TopNumber));
 }
 
+function getName(){
+  return(prompt('whats your name?'))
+}
 /*
 Author: Iris
 Obtain a random card that hasn't been dealt.
@@ -43,7 +51,7 @@ Returns: Card object.
 function getCard()
 {
   var cardAlreadyDealt = false;
-  var attemtedCard
+  var attemptedCard
   var i;
   if (totalCardsDealt===52)
     alert('All cards have been dealt');
@@ -54,19 +62,19 @@ function getCard()
     {
       cardAlreadyDealt = false;
       // obtain a random number between 1-51
-      attemtedCard = deck[getRandomNumber(52)];
+      attemptedCard = deck[getRandomNumber(52)];
       // review in Dealer.hand if the attempt card is there
-      for (i=0; i< dealer.hand.length; i++)
+      for (i=0; i< NewDealer.hand; i++)
       {
-        if ((attemtedCard.value === dealer.hand[i].value) && (attemtedCard.suit === dealer.hand[i].suit))
+        if ((attemptedCard.value === dealer.hand[i].value) && (attemptedCard.suit === dealer.hand[i].suit))
           {
             cardAlreadyDealt = true;  
           }
       }
       // review in NewPlayer.hand if the attemted car is there
-      for (i=0; i< player.hand.length; i++)
+      for (i=0; i< NewPlayer.hand; i++)
       {
-        if ((attemtedCard.value === player.hand[i].value) && (attemtedCard.suit === player.hand[i].suit))
+        if ((attemptedCard.value === player.hand[i].value) && (attemptedCard.suit === player.hand[i].suit))
         {
           cardAlreadyDealt = true;
         }
@@ -74,33 +82,32 @@ function getCard()
     }
     while (cardAlreadyDealt === true);
     totalCardsDealt++;
-    return(attemtedCard);
+    console.log(attemptedCard)
+    return(attemptedCard);
   }
 }
 
-
-
-// CREATE 
-var dealer = new NewDealer(); // this is a global variable
-var player = new NewPlayer(); // this is a global variable
 var totalCardsDealt = 0 //to know how many cards already have been dealt. TODO: reset to 0 when start game
 
 //validate ace value. Card dealt needs to pass through this before being rendered.
 function aceValid(cardDealt, indiv){
-  while(cardDealt.name === 'ace'){
+  
+  if(cardDealt.name === 'Ace'){
     if(indiv.score >= 11){
       cardDealt.value = 1;
     }else{
       cardDealt.value = 11;
     }
-    console.log(cardDealt)
-    console.log(indiv)
-  }return(cardDealt)
+  }
+  return(cardDealt)
 }
 // pushes card to ttl and hand arr
 function pushHand (playerOrDealer){
-  aceValid().push(playerOrDealer.score);
-  aceValid().push(playerOrDealer.hand);
+  // aceValid(getCard(), playerOrDealer).push(playerOrDealer.score);
+  playerOrDealer.hand.push(aceValid(getCard(), playerOrDealer));
+  console.log('WHATS THIS ', playerOrDealer)
+  console.log('RETURN ' ,c.score + 8);
+  
   
 }
 
@@ -108,9 +115,9 @@ function pushHand (playerOrDealer){
 // checks ea hand to see if they have 21
 function check21(playerOrDealer){
   if(playerOrDealer.score > 21){
-    displayResults(`${playerOrDealer.name} has lost`); // playerOrDealer function needs to be created still with a message parameter
+    results(`${playerOrDealer.name} has lost`); // playerOrDealer function needs to be created still with a message parameter
   } else if(playerOrDealer.score === 21){
-    displayResults(`${playerOrDealer.name} just hit 21!`);
+    results(`${playerOrDealer.name} just hit 21!`);
   } else{
     return(false); 
   } 
@@ -132,7 +139,7 @@ function saveData(key, data){
 }
 
 // saves user name to local storage
-saveData('name', player.name)
+saveData('name', NewPlayer.name)
 
 // render function. elementId has to be a string of playerCard or dealerCard.
 function render (elementId, cardImg){
@@ -158,15 +165,9 @@ function dealerTurn(){
 
   
   function hitButton() {
-    player.getCard();
-    if(NewPlayer.score > 21) {
-      gameResult();
-    }
-    else if(NewPlayer.score === 21) {
-      hitButton.disabled = true;
-      standButton.disabled = true;
-      gameResult();
-    }
+    getCard();
+    render('playerCard', pushHand())
+    check21('player')
   }
 
   function stayButton() {
@@ -175,18 +176,18 @@ function dealerTurn(){
     standButton.disabled = true;
   }
 
-  function results() {
+  function results(message) {
     if (dealer.score > player.score === true) {
-      alert( 'The Dealer wins')
+      return(alert( message))
     }
     else if(dealer.score < player.score === true) {
-        alert('You Win!');
+      return(alert( message))
   }
 }
 
-var playAgain = confirm('Would You Like To Play Again?');
-if (playAgain == true) {
-  //start game function
-} else {
-    alert('Bye Bye!')
-}
+  var playAgain = confirm('Would You Like To Play Again?');
+  if (playAgain == true) {
+    //start game function
+  } else {
+      alert('Bye Bye!')
+  }
