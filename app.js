@@ -96,3 +96,12 @@ function render (elementId, cardImg){
     hitButton.disabled = true;
     standButton.disabled = true;
   }
+
+  function results() {
+    if (dealer.score > player.score === true) {
+      alert( 'The Dealer wins')
+    }
+    else if(dealer.score < player.score === true) {
+        alert('You Win!');
+  }
+}
