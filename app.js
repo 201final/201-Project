@@ -15,7 +15,7 @@ function NewDealer(){
   this.score = 12;
 }
 
-var dealer = new Dealer();
+
 var player = new NewPlayer('will');
 
 
