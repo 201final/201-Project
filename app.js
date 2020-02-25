@@ -1,46 +1,48 @@
 'use strict'
-// global variables
-var playerArr = [];
-
 
 // builds new player object
 function NewPlayer(name) {
   this.name = name;
   this.hand = [];
-  this.score = 0;
+  this.score = 15;
   this.bet = 0;
-  playerArr.push(this)
 }
 
 function dealer(){
   this.hand = [];
-  this.score = 0;
+  this.score = 12;
 }
 
+var dealer = new dealer();
+var player = new NewPlayer('will');
 
 //validate ace value. Card dealt needs to pass through this before being rendered.
-function aceValid(cardDealt){
+function aceValid(cardDealt, indiv){
   while(cardDealt === 'ace'){
-    if(sumArr(playerArr[0].hand) >= 11){
+    if(indiv.score >= 11){
       cardDealt = 1;
     }else{
       cardDealt = 11;
     }
+    console.log(cardDealt)
+    console.log(indiv)
   }return(cardDealt)
 }
 
 // checks ea hand to see if they have 21
-card.prototype.check21 = function (){
-  if(sumArr(this.hand) > 21){
+card.prototype.check21 = function (playerOrDealer){
+  aceValid(cardDealt, playerOrDealer);
+
+  if(this.score > 21){
     displayResults(`${this.name} has lost`); // this function needs to be created still with a message parameter
-  } else if(sumArr(this.hand) === 21){
+  } else if(sumArr(this.score) === 21){
     displayResults(`${this.name} just hit 21!`);
   } else{
-    return(renderTtl(sumArr(this.hand))); // need render total function to return to the DOM.
+    return(renderTtl(this.hand)); // need render total function to return to the DOM.
   } 
 }
 
-//sums up an arrays
+// sums up an arrays
 function sumArr(arr){ 
   var i = 0;
   var ttl = 0;
@@ -56,4 +58,4 @@ function saveData(key, data){
 }
 
 // saves user name to local storage
-saveData('name', playerArr[0].name)
+saveData('name', player.name)
