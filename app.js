@@ -26,24 +26,30 @@ function startGame(){
   {
     dealer = new NewDealer();
     player =  new NewPlayer(getName());
-    // TODO: reset HTML to initial form (without cards or labels).  
+    displayMsgInScreen('Have fun ' + player.name + ' !!!');
     giveInitialCards();
   }
   else
   {
-    alert('Have a nice day!');
+    // alert('Have a nice day!');
+    displayMsgInScreen('Have a nice day!');
   }
 }
 
 function resetGame()
 {
-  debugger;
   dealer.hand = [];
   dealer.score = 0;
 
   player.hand = [];
   player.score = 0;
   //TODO ask for a bet
+  var dealerCardsContainer, playerCardsContainer;
+  dealerCardsContainer = document.getElementById('dealerCard');
+  playerCardsContainer = document.getElementById('player');
+  dealerCardsContainer.innerHTML = null;
+  playerCardsContainer.innerHTML = null;
+
   giveInitialCards();
 }
 
@@ -55,7 +61,7 @@ function giveInitialCards()
   pushHand(player);
   pushHand(player);
   check21(player);
-  pushHand(dealer); 
+  pushHand(dealer);
 }
 
 /*
@@ -65,8 +71,7 @@ Returns: boolean.
 */
 function askUserIfWantsToPlay()
 {
-  return( confirm('Hi there! \n Do you want to play BlackJack?'));
-  // needs to start game function
+  return( confirm('Hi there! \nDo you want to play BlackJack?'));
 }
 
 
@@ -75,7 +80,7 @@ function getRandomNumber(TopNumber){
 }
 
 function getName(){
-  return(prompt('Whats your name?'))
+  return(prompt('Whats your name?'));
 }
 /*
 Author: Iris
@@ -98,7 +103,7 @@ function getCard()
     {
       if ((attemptedCard.value === dealer.hand[i].value) && (attemptedCard.suit === dealer.hand[i].suit))
         {
-          cardAlreadyDealt = true;  
+          cardAlreadyDealt = true;
         }
     }
     // review in NewPlayer.hand if the attemted car is there
@@ -114,11 +119,8 @@ function getCard()
   return(attemptedCard);
 }
 
-
-
-//validate ace value. Card dealt needs to pass through this before being rendered.
 function aceValid(cardDealt, indiv){
-  
+
   if(cardDealt.name === 'Ace'){
     if(indiv.score >= 11){
       cardDealt.value = 1;
@@ -136,23 +138,26 @@ function pushHand (playerOrDealer){
   newCard = aceValid(newCard, playerOrDealer);
   playerOrDealer.hand.push(newCard);
   playerOrDealer.score =  playerOrDealer.score + newCard.value;
+  renderCard(playerOrDealer, newCard);
 }
 
 // checks ea hand to see if they have 21
 function check21(playerOrDealer){
   if(playerOrDealer.score > 21){
-    results(`${playerOrDealer.name} has lost`); // playerOrDealer function needs to be created still with a message parameter
-    askWantsToPlayAgain();
+    // results(`${playerOrDealer.name} has lost`); // playerOrDealer function needs to be created still with a message parameter
+    displayMsgInScreen(playerOrDealer.name + ' has lost !');
+    // askWantsToPlayAgain(); //TODO change this to the button
   } else if(playerOrDealer.score === 21){
-    results(`${playerOrDealer.name} just hit 21!`);
-    askWantsToPlayAgain();
+    // results(`${playerOrDealer.name} just hit 21!`);
+    displayMsgInScreen(playerOrDealer.name + '  just hit 21!');
+    // askWantsToPlayAgain();
   } else{
-    return(false); 
-  } 
+    return(false);
+  }
 }
 
 // sums up an arrays
-function sumArr(arr){ 
+function sumArr(arr){
   var i = 0;
   var ttl = 0;
   while (i < arr.length){
@@ -171,29 +176,42 @@ function saveData(key, data){
 saveData('name', NewPlayer.name)  //TODO: check if we are going to move this to a function
 
 // render function. elementId has to be a string of playerCard or dealerCard.
-function render (elementId, cardImg){
+function renderCard(playerOrDealer, cardToRender){
+  var imgParentContainer;
+  if (playerOrDealer.name === 'Dealer')
+  {
+    imgParentContainer = document.getElementById('dealerCard');
+  }
+  else
+  {
+    imgParentContainer = document.getElementById('player');
+  }
+  var newCardImage = document.createElement('img');
+  newCardImage.src = cardToRender.image;
+  newCardImage.alt = (cardToRender.value + ' ' + cardToRender.suit);
+  imgParentContainer.appendChild(newCardImage);
 
-  var renderCard = document.createElement('img');
+  // newCardImage = document.createElement('img');
+  // newCardImage.src = './svg-cards/back.png';
+  // newCardImage.alt = 'card back';
+  // imgParentContainer.appendChild(newCardImage);
 
-  renderCard.src = cardImg.imgPath
-  renderCard.alt = cardImg.name
-
-  document.getElementById(elementId).appendChild(renderCard) 
 }
 
-//working: iris, i change the check21 parameter from text to dealer object. needs the render function to works
-// action for dealers turn
+
 function dealerTurn(){
-  console.log('in dealerTurn now');
-  // pushHand(player);
-  // check21(player);
-  // while(check21(dealer) === false){
-  //   render('dealerCard', pushHand())
-  // }
-  //pushHand(dealer); // this is the second "hidden" card of the dealer
+  // // // // console.log('dealer turn');
+  // // // var interval = setInterval(function() {
+  // // //   pushHand(dealer);
+  // // //   console.log(check21(dealer), dealer.score);
+  // // //   if (check21(dealer) !== false) {
+  // // //     clearInterval(interval);
+  // // //   }
+  // // // }, 1000);
+
   do
     pushHand(dealer);
-    // check21(player);
+    //wait
   while (check21(dealer) === false);
 }
 
@@ -202,15 +220,14 @@ document.getElementById("buttonHit").addEventListener("click", hitButton);
 
 document.getElementById("buttonStay").addEventListener("click", stayButton);
 
- //debugger 
+
 function hitButton(event) {
   pushHand(player);
   check21(player);
-    // render('playerCard', pushHand())
 }
 
 function stayButton() {
-  hitButton.disabled = true;
+  // hitButton.disabled = true;
   // standButton.disabled = true; this does not exist
   dealerTurn();
 }
@@ -230,6 +247,15 @@ function askWantsToPlayAgain()
   if (playAgain == true) {
     resetGame();
   } else {
-      alert('See you later!');
+      // alert('See you later!');
+      displayMsgInScreen('See you later!');
   }
+}
+
+function displayMsgInScreen(messageToDisplay)
+{
+  var msg;
+  // alert('in displayMessage');
+  msg = document.getElementById('messages');
+  msg.textContent = messageToDisplay;
 }
