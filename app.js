@@ -19,6 +19,8 @@ function startGame(){
   var dealer = new NewDealer();
   var player =  new NewPlayer(getName());
    pushHand(player);
+   pushHand(player);
+   pushHand(player);
    
    
 }
@@ -101,14 +103,21 @@ function aceValid(cardDealt, indiv){
   }
   return(cardDealt)
 }
+
 // pushes card to ttl and hand arr
 function pushHand (playerOrDealer){
   // aceValid(getCard(), playerOrDealer).push(playerOrDealer.score);
-  playerOrDealer.hand.push(aceValid(getCard(), playerOrDealer));
-  console.log('WHATS THIS ', playerOrDealer);
-  console.log('RETURN ' ,c.score + 8);
-}
 
+
+  // // playerOrDealer.hand.push(aceValid(getCard(), playerOrDealer));
+  var newCard;
+  newCard = aceValid(getCard());
+  playerOrDealer.hand.push(newCard);
+  playerOrDealer.score =  playerOrDealer.score + newCard.value;
+  console.log('WHATS THIS ', playerOrDealer)
+  
+
+}
 
 // checks ea hand to see if they have 21
 function check21(playerOrDealer){
@@ -131,6 +140,7 @@ function sumArr(arr){
   }
   return(ttl);
 }
+
 // save to local storage function
 function saveData(key, data){
   localStorage.setItem(key, JSON.stringify(data));
@@ -141,14 +151,15 @@ saveData('name', NewPlayer.name)
 
 // render function. elementId has to be a string of playerCard or dealerCard.
 function render (elementId, cardImg){
-  
-  var renderCard = document.createElement('img');
-  
-  renderCard.src = cardImg.imgPath
-  renderCard.alt = cardImg.name
-  
-  document.getElementById(elementId).appendChild(renderCard) 
+
+var renderCard = document.createElement('img');
+
+renderCard.src = cardImg.imgPath
+renderCard.alt = cardImg.name
+
+document.getElementById(elementId).appendChild(renderCard) 
 }
+
 // action for dealers turn
 function dealerTurn(){
   while(check21('Dealer') === false){
@@ -157,35 +168,35 @@ function dealerTurn(){
 }
 
 
-  document.getElementById("buttonHit").addEventListener("click", hitButton(event));
+document.getElementById("buttonHit").addEventListener("click", hitButton(event));
 
-  document.getElementById("buttonStay").addEventListener("click", stayButton(event));
+document.getElementById("buttonStay").addEventListener("click", stayButton(event));
 
   
-  function hitButton() {
-    getCard();
-    render('playerCard', pushHand())
-    check21('player')
-  }
+function hitButton() {
+  getCard();
+  render('playerCard', pushHand())
+  check21('player')
+}
 
-  function stayButton() {
-    dealerTurn();
-    hitButton.disabled = true;
-    standButton.disabled = true;
-  }
+function stayButton() {
+  dealerTurn();
+  hitButton.disabled = true;
+  standButton.disabled = true;
+}
 
-  function results(message) {
-    if (dealer.score > player.score === true) {
-      return(alert( message))
-    }
-    else if(dealer.score < player.score === true) {
-      return(alert( message))
+function results(message) {
+  if (dealer.score > player.score === true) {
+    return(alert( message))
+  }
+  else if(dealer.score < player.score === true) {
+    return(alert( message))
   }
 }
 
-  var playAgain = confirm('Would You Like To Play Again?');
-  if (playAgain == true) {
-    //start game function
-  } else {
-      alert('Bye Bye!')
-  }
+var playAgain = confirm('Would You Like To Play Again?');
+if (playAgain == true) {
+  //start game function
+} else {
+    alert('Bye Bye!')
+}
