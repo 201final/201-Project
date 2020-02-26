@@ -105,10 +105,8 @@ function aceValid(cardDealt, indiv){
 function pushHand (playerOrDealer){
   // aceValid(getCard(), playerOrDealer).push(playerOrDealer.score);
   playerOrDealer.hand.push(aceValid(getCard(), playerOrDealer));
-  console.log('WHATS THIS ', playerOrDealer)
+  console.log('WHATS THIS ', playerOrDealer);
   console.log('RETURN ' ,c.score + 8);
-  
-  
 }
 
 
