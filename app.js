@@ -26,10 +26,8 @@ function startGame(){
   {
     dealer = new NewDealer();
     player =  new NewPlayer(getName());
-    pushHand(player);
-    pushHand(player);
-    check21(player);
-    pushHand(dealer);   
+    // TODO: reset HTML to initial form (without cards or labels).  
+    giveInitialCards();
   }
   else
   {
@@ -37,7 +35,28 @@ function startGame(){
   }
 }
 
+function resetGame()
+{
+  debugger;
+  dealer.hand = [];
+  dealer.score = 0;
 
+  player.hand = [];
+  player.score = 0;
+  //TODO ask for a bet
+  giveInitialCards();
+}
+
+/*
+Gives 2 cards for the player and 1 for the dealer at the beggining of the game.
+*/
+function giveInitialCards()
+{
+  pushHand(player);
+  pushHand(player);
+  check21(player);
+  pushHand(dealer); 
+}
 
 /*
 Author: Iris
@@ -209,8 +228,8 @@ function askWantsToPlayAgain()
 {
   var playAgain = confirm('Would You Like To Play Again?');
   if (playAgain == true) {
-    alert('TODO decide if what startGame is going to be in a separate funciton, or the same here')
+    resetGame();
   } else {
-      alert('Bye Bye!')
+      alert('See you later!');
   }
 }
