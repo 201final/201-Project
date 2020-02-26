@@ -1,5 +1,5 @@
-'use strict'
 
+'use strict'
 // builds new player object
 function NewPlayer(name) {
   this.name = name;
@@ -7,12 +7,11 @@ function NewPlayer(name) {
   this.score = 0;
   this.bet = 0;
 }
-
-
 function NewDealer(){
   this.name = 'Dealer';
   this.hand = [];
   this.score = 0;
+
 }
 
 // GLOBAL VARIABLES
@@ -74,7 +73,6 @@ function askUserIfWantsToPlay()
   return( confirm('Hi there! \nDo you want to play BlackJack?'));
 }
 
-
 function getRandomNumber(TopNumber){
   return(Math.floor(Math.random() * TopNumber));
 }
@@ -119,7 +117,11 @@ function getCard()
   return(attemptedCard);
 }
 
+
+//validate ace value. Card dealt needs to pass through this before being rendered.
 function aceValid(cardDealt, indiv){
+  
+
 
   if(cardDealt.name === 'Ace'){
     if(indiv.score >= 11){
@@ -138,8 +140,11 @@ function pushHand (playerOrDealer){
   newCard = aceValid(newCard, playerOrDealer);
   playerOrDealer.hand.push(newCard);
   playerOrDealer.score =  playerOrDealer.score + newCard.value;
+
   renderCard(playerOrDealer, newCard);
+
 }
+
 
 // checks ea hand to see if they have 21
 function check21(playerOrDealer){
@@ -155,7 +160,6 @@ function check21(playerOrDealer){
     return(false);
   }
 }
-
 // sums up an arrays
 function sumArr(arr){
   var i = 0;
@@ -171,7 +175,6 @@ function sumArr(arr){
 function saveData(key, data){
   localStorage.setItem(key, JSON.stringify(data));
 }
-
 // saves user name to local storage
 saveData('name', NewPlayer.name)  //TODO: check if we are going to move this to a function
 

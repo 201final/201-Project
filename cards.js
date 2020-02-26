@@ -1,9 +1,7 @@
-
-var deck = []; 
-
+var deck = [];
 var Card = function(value, suit, name, image){
     this.value = value;
-    this.suit = suit; 
+    this.suit = suit;
     this.name = name;
     this.image = image;
     deck.push(this);
@@ -61,3 +59,4 @@ var kingOfSpades = new Card(10, 'Spades', 'King', './svg-cards/king_of_spades.sv
 var kingOfHearts = new Card(10, 'Hearts', 'King', './svg-cards/king_of_hearts.svg');
 var kingOfDiamonds = new Card(10, 'Diamonds', 'King', './svg-cards/king_of_diamonds.svg');
 var kingOfClubs = new Card(10, 'Clubs', 'King', './svg-cards/king_of_clubs.svg');
+
