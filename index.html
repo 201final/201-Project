@@ -13,17 +13,19 @@
     <h1>Blackjack Game</h1>
   </header>
   <main>
- 
-      <section id="dealerHand">
+    
+    <section id="dealerHand">
       <img id="deckImg" src="svg-cards/simple/cards_PNG8474.png" alt="">
-      <figure id="dealerCard">
-        <img id="dealerCard1" src="svg-cards/2_of_diamonds.svg" alt="diaTwo">
-        <img id="dealerCard2" src="svg-cards/2_of_diamonds.svg" alt="diaTwo">
+      <figure class="dealerCard">
+        <div>
+          <img class="d1" id="dealerCard1" src="./svg-cards/black_joker.svg" alt="cR">
+          <img class="d2" id="dealerCard2" src="svg-cards/2_of_diamonds.svg" alt="diaTwo">
+        </div>
       </figure>
       <button id="buttonHit" type="submit">Hit</button>
-    </section>
+    </section>>
 
-    <section>
+   <section>
       <!-- empty for now, maybe bets 
       The queen of diamonds are place holders just do I can put them in our agreed place-->
     </section>
@@ -42,9 +44,9 @@
 
 </main>
 
-  <script src="cards.js"></script>
-
-  <script src="app.js"></script>
- 
+<script src="https://cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
 </body>
+  <script src="cards.js"></script>
+  <script src="anime.js"></script>
+  <script src="app.js"></script>
 </html>

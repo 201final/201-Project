@@ -27,6 +27,7 @@ h1{
 #dealerHand{
 position: relative;
 margin-bottom: -550px;
+
 }
 
 #deckImg{
@@ -61,18 +62,27 @@ figure{
   top: -300px;
 }
 
+.d3{
+  transform-style: preserve-3d;
+}
+
 #dealerCard1{
+ position: absolute;
  padding-left: 5px;
  padding-right: 10px;
  height:auto;
  width: 150px;
+ 
 }
+
+
 
 #dealerCard2{
   padding-left: 10px;
   padding-right: 10px;
   height:auto;
   width: 150px;
+  
 }
 
 
