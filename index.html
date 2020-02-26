@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,39 +13,39 @@
     <img id="chipsLeft" src="svg-cards/simple/59-594947_stacks-of-poker-chips-png-poker-chips-transparent.png" alt="cL">
     <img id="chipsRight" src="svg-cards/simple/59-594947_stacks-of-poker-chips-png-poker-chips-transparent.png" alt="cR">
     <h1>Blackjack Game</h1>
+    <h3 id="messages">dummy text</h3>
   </header>
   <main>
- 
       <section id="dealerHand">
-      <img id="deckImg" src="svg-cards/simple/cards_PNG8474.png" alt="">
-      <figure id="dealerCard">
-        <img id="dealerCard1" src="svg-cards/2_of_diamonds.svg" alt="diaTwo">
-        <img id="dealerCard2" src="svg-cards/2_of_diamonds.svg" alt="diaTwo">
-      </figure>
-      <button id="buttonHit"type="submit">Hit</button>
+        
+        <div class="dealer">
+        </div>
+      
+        <button id="buuton" type="submit" name="hit" value="myimage">
+ <img id="deeck" src="svg-cards/simple/cards_PNG8474.png">
+      </button>
     </section>
 
     <section>
-      <!-- empty for now, maybe bets 
+      <!-- empty for now, maybe bets
       The queen of diamonds are place holders just do I can put them in our agreed place-->
     </section>
-
     <section id="playerCard">
+
+      <div class="user">
+      </div>
+
       <h2>Your Cards</h2>
       <h2>Users Name</h2>
       <figure id="player">
-        <img id="imgCardOne" src="svg-cards/2_of_diamonds.svg" alt="diaTwo">
-        <img id="imgCardTwo" src="svg-cards/2_of_diamonds.svg" alt="diaTwo">
       </figure>
     </section>
-    <section is="secThree">
+    <section id="secThree">
       <button id="buttonStay" type="submit">Stay</button>
+      <button id="buttonAgain" type="submit">Play Again?</button>
     </section>
-
 </main>
-
   <script src="cards.js"></script>
-
   <script src="app.js"></script>
 </body>
 </html>
