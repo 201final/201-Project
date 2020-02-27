@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,42 +13,39 @@
     <img id="chipsLeft" src="svg-cards/simple/59-594947_stacks-of-poker-chips-png-poker-chips-transparent.png" alt="cL">
     <img id="chipsRight" src="svg-cards/simple/59-594947_stacks-of-poker-chips-png-poker-chips-transparent.png" alt="cR">
     <h1>Blackjack Game</h1>
+    <h3 id="messages">dummy text</h3>
   </header>
   <main>
-    
-    <section id="dealerHand">
-      <img id="deckImg" src="svg-cards/simple/cards_PNG8474.png" alt="">
-      <figure class="dealerCard">
-        <div>
-          <img class="d1" id="dealerCard1" src="./svg-cards/black_joker.svg" alt="cR">
-          <img class="d2" id="dealerCard2" src="svg-cards/2_of_diamonds.svg" alt="diaTwo">
+      <section id="dealerHand">
+        
+        <div class="dealer">
         </div>
-      </figure>
-      <button id="buttonHit" type="submit">Hit</button>
-    </section>>
+      
+        <button id="buuton" type="submit" name="hit" value="myimage">
+ <img id="deeck" src="svg-cards/simple/cards_PNG8474.png">
+      </button>
 
-   <section>
-      <!-- empty for now, maybe bets 
-      The queen of diamonds are place holders just do I can put them in our agreed place-->
     </section>
 
+    <section>
+      <!-- empty for now, maybe bets
+      The queen of diamonds are place holders just do I can put them in our agreed place-->
+    </section>
     <section id="playerCard">
+
+      <div class="user">
+      </div>
+
       <h2>Your Cards</h2>
       <h2>Users Name</h2>
       <figure id="player">
-        <img id="imgCardOne" src="svg-cards/2_of_diamonds.svg" alt="diaTwo">
-        <img id="imgCardTwo" src="svg-cards/2_of_diamonds.svg" alt="diaTwo">
       </figure>
     </section>
-    <section is="secThree">
+    <section id="secThree">
       <button id="buttonStay" type="submit">Stay</button>
+      <button id="buttonAgain" type="submit">Play Again?</button>
     </section>
-
 </main>
-
-<script src="https://cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
-</body>
   <script src="cards.js"></script>
-  <script src="anime.js"></script>
   <script src="app.js"></script>
 </html>
