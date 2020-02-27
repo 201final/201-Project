@@ -254,7 +254,6 @@ function renderCard(playerOrDealer, cardToRender){
   newCardImage.src = cardToRender.image;
   newCardImage.alt = (cardToRender.value + ' ' + cardToRender.suit);
   imgParentContainer.appendChild(newCardImage);
-
 }
 
 
@@ -266,6 +265,7 @@ function dealerTurn(){
 
   do
     pushHand(dealer);
+    //wait
   while (check21(dealer) === false);
 }
 
@@ -306,9 +306,22 @@ function askWantsToPlayAgain()
   if (playAgain == true) {
     resetGame();
   } else {
+
+      // alert('See you later!');
       displayMsgInScreen('See you later!');
   }
 }
+function displayMsgInScreen(messageToDisplay)
+{
+  var msg;
+  // alert('in displayMessage');
+  msg = document.getElementById('messages');
+  msg.textContent = messageToDisplay;
+
+
+      displayMsgInScreen('See you later!');
+  }
+
 
 function displayMsgInScreen(messageToDisplay)
 {
