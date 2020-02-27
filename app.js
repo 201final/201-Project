@@ -210,8 +210,11 @@ function check21(playerOrDealer){
     disableHitStayButtons(true);
   } else if(playerOrDealer.score === 21){
     displayMsgInScreen(playerOrDealer.name + '  just hit 21!');
-    updateBank(true, player.hand.length === 2)
-    updateBank(false, false);
+      if(playerOrDealer === dealer){
+        updateBank(false,false);
+      }else{
+        updateBank(true, player.hand.length === 2);
+      }
     disableHitStayButtons(true);
   }else if(dealer.score > player.score){
     displayMsgInScreen('Dealer wins');
