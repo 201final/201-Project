@@ -226,9 +226,23 @@ function check21(playerOrDealer){
     // askWantsToPlayAgain();
 =======
     displayMsgInScreen(playerOrDealer.name + ' has lost !');
+
+    if(playerOrDealer === dealer){
+      // Dealar busted
+      updateBank(true, false);
+    } else {
+      // Player busted
+      updateBank(false, false);
+    }
     disableHitStayButtons(true);
   } else if(playerOrDealer.score === 21){
     displayMsgInScreen(playerOrDealer.name + '  just hit 21!');
+    updateBank(true, player.hand.length === 2)
+    updateBank(false, false);
+    disableHitStayButtons(true);
+  }else if(dealer.score > player.score){
+    displayMsgInScreen('Dealer wins');
+    updateBank(false, false)
     disableHitStayButtons(true);
   }else if(dealer.score > player.score){
     displayMsgInScreen('Dealer wins');
@@ -376,4 +390,8 @@ function displayMsgInScreen(messageToDisplay)
   msg.textContent = messageToDisplay;
 }
 
+<<<<<<< HEAD
 >>>>>>> 1303678c9c3fb0fc3c30de33d3f17ca6e00c6bfb
+=======
+
+>>>>>>> 28702ca37cce5ba72af0148e7bb442d7ea143d89
