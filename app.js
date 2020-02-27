@@ -48,7 +48,9 @@ function resetGame()
   playerCardsContainer = document.getElementById('player');
   dealerCardsContainer.innerHTML = null;
   playerCardsContainer.innerHTML = null;
-
+  buuton.disabled = false;
+  buttonStay.disabled = false;
+  displayMsgInScreen(player.name + ' welcome back');
   giveInitialCards();
 }
 
@@ -151,15 +153,21 @@ function check21(playerOrDealer){
   if(playerOrDealer.score > 21){
     // results(`${playerOrDealer.name} has lost`); // playerOrDealer function needs to be created still with a message parameter
     displayMsgInScreen(playerOrDealer.name + ' has lost !');
-    // askWantsToPlayAgain(); //TODO change this to the button
+    // endGame();
   } else if(playerOrDealer.score === 21){
     // results(`${playerOrDealer.name} just hit 21!`);
     displayMsgInScreen(playerOrDealer.name + '  just hit 21!');
-    // askWantsToPlayAgain();
+    // endGame();
   } else{
     return(false);
   }
 }
+
+// function endGame()
+// {
+
+// }
+
 // sums up an arrays
 function sumArr(arr){
   var i = 0;
@@ -219,9 +227,9 @@ function dealerTurn(){
 }
 
 
-document.getElementById("buttonHit").addEventListener("click", hitButton);
-
+document.getElementById("buuton").addEventListener("click", hitButton);
 document.getElementById("buttonStay").addEventListener("click", stayButton);
+document.getElementById("buttonAgain").addEventListener("click", resetGame);
 
 
 function hitButton(event) {
@@ -230,8 +238,8 @@ function hitButton(event) {
 }
 
 function stayButton() {
-  // hitButton.disabled = true;
-  // standButton.disabled = true; this does not exist
+  buuton.disabled = true;
+  buttonStay.disabled = true;
   dealerTurn();
 }
 
@@ -244,7 +252,7 @@ function results(message) {
   }
 }
 
-function askWantsToPlayAgain()
+function askWantsToPlayAgain() // TODO delete this
 {
   var playAgain = confirm('Would You Like To Play Again?');
   if (playAgain == true) {
