@@ -31,6 +31,10 @@ function validateBet(){
     alert("Bet must be a multiple of 100");
     return false;
   }
+  if(betValue > player.bank){
+    alert('Not enough funds');
+    return false;
+  }
   // Once we've passed validation, disable the form and place the bet
   toggleBetForm(true);
   placeBet(betValue);
