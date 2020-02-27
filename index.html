@@ -11,28 +11,41 @@
     <img id="chipsLeft" src="svg-cards/simple/59-594947_stacks-of-poker-chips-png-poker-chips-transparent.png" alt="cL">
     <img id="chipsRight" src="svg-cards/simple/59-594947_stacks-of-poker-chips-png-poker-chips-transparent.png" alt="cR">
     <h1>Blackjack Game</h1>
+    <h3 id="messages">dummy text</h3>
   </header>
   <main>
-
-    <section>
-      <img id="deckImg" src="svg-cards/simple/cards_PNG8474.png" alt="">
-      <figure id="dealerCard">
-
-      </figure>
-      <button id="buttonHit" type="submit">Hit</button>
+      <section id="dealerHand">
+        
+        <figure id="dealerCard">
+        </figure>
+      
+        <button id="buuton" type="submit" name="hit" value="myimage">
+ <img id="deeck" src="svg-cards/simple/cards_PNG8474.png">
+      </button>
     </section>
     <section>
-      <!-- empty for now, maybe bets 
-      The queen of diamonds are place holders just do I can put them in our agreed place-->
+      <div id="betForm">
+        <span class="bettool">You can only change your bet between rounds.</span>
+          <form name="bettool" class="bettool">
+            <fieldset id="myFieldset">
+              <label>Bank: <span id="bank"></span></label><br/>
+              <label for = "bet">Bet: </label>
+              <input id="Bet" type="number" name="bet" value="100" min="100">
+              <button id="placeBetBtn" type = "button" name = "placebet" onclick="return validateBet()"><p>Place Bet!</p></button>
+            </fieldset>
+          </form>
     </section>
-
     <section id="playerCard">
+      <div class="user">
+      </div>
       <h2>Your Cards</h2>
       <h2>Users Name</h2>
-   
+      <figure id="player">
+      </figure>
     </section>
-    <section is="secThree">
+    <section id="secThree">
       <button id="buttonStay" type="submit">Stay</button>
+      <button id="buttonAgain" type="submit">Play Again?</button>
     </section>
     
     <div id="betForm">
@@ -46,9 +59,7 @@
           </fieldset>
         </form>
 </main>
-
   <script src="cards.js"></script>
-
   <script src="app.js"></script>
 </body>
 </html>
