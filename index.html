@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,17 +18,27 @@
         
         <figure id="dealerCard">
         </figure>
+<<<<<<< HEAD
+=======
+      
+>>>>>>> 1303678c9c3fb0fc3c30de33d3f17ca6e00c6bfb
         <button id="buuton" type="submit" name="hit" value="myimage">
  <img id="deeck" src="svg-cards/simple/cards_PNG8474.png">
         </button>
     </section>
-
     <section>
-      <!-- empty for now, maybe bets
-      The queen of diamonds are place holders just do I can put them in our agreed place-->
+      <div id="betForm">
+        <span class="bettool">You can only change your bet between rounds.</span>
+          <form name="bettool" class="bettool">
+            <fieldset id="myFieldset">
+              <label>Bank: <span id="bank"></span></label><br/>
+              <label for = "bet">Bet: </label>
+              <input id="Bet" type="number" name="bet" value="100" min="100">
+              <button id="placeBetBtn" type = "button" name = "placebet" onclick="return validateBet()"><p>Place Bet!</p></button>
+            </fieldset>
+          </form>
     </section>
     <section id="playerCard">
-
       <div class="user">
       </div>
       <figure id="player">
@@ -41,7 +49,8 @@
       <button id="buttonAgain" type="submit">Play Again?</button>
     </section>
 </main>
-  <script src="cards.js"></script>
-  <script src="app.js"></script>
-</body>
+<script src="https://cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+<script src="cards.js"></script>
+<script src="app.js"></script>
+<script src="anime.js"></script>
 </html>

@@ -6,6 +6,7 @@ var Card = function(value, suit, name, image){
     this.image = image;
     deck.push(this);
 }
+
 var aceOfSpades = new Card(1||11, 'Spades', 'Ace', './svg-cards/ace_of_spades.svg');
 var aceOfHearts = new Card(1||11, 'Hearts', 'Ace', './svg-cards/ace_of_hearts.svg');
 var aceOfDiamonds = new Card(1||11, 'Diamonds', 'Ace', './svg-cards/ace_of_diamonds.svg');
@@ -58,3 +59,4 @@ var kingOfSpades = new Card(10, 'Spades', 'King', './svg-cards/king_of_spades.sv
 var kingOfHearts = new Card(10, 'Hearts', 'King', './svg-cards/king_of_hearts.svg');
 var kingOfDiamonds = new Card(10, 'Diamonds', 'King', './svg-cards/king_of_diamonds.svg');
 var kingOfClubs = new Card(10, 'Clubs', 'King', './svg-cards/king_of_clubs.svg');
+
