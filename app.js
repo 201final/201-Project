@@ -7,11 +7,11 @@ function NewPlayer(name) {
   this.bet = 0;
   this.bank = 1000;
 }
+
 function NewDealer(){
   this.name = 'Dealer';
   this.hand = [];
   this.score = 0;
-
 }
 
 // GLOBAL VARIABLES
@@ -38,14 +38,21 @@ function validateBet(){
   // Once we've passed validation, disable the form and place the bet
   toggleBetForm(true);
   placeBet(betValue);
+  displayMsgInScreen('Have fun ' + player.name + '!!');
+  giveInitialCards();
+  disableHitStayButtons(false);
+  buttonAgain.disabled = true;
 }
+
 function toggleBetForm(isDisabled){
   document.getElementById("Bet").disabled = isDisabled;
   document.getElementById("placeBetBtn").disabled = isDisabled;
 }
+
 function placeBet(bet){
   player.bet = bet;
 }
+
 function updateBank(isWin, isBlackjack){
   // Figure out how much was won or lost
   var betMultiplier = 1;
@@ -63,18 +70,19 @@ function updateBank(isWin, isBlackjack){
 }
 
 function startGame(){
+  disableHitStayButtons(true);
   if (askUserIfWantsToPlay())
   {
     dealer = new NewDealer();
     player =  new NewPlayer(getName());
-    displayMsgInScreen('Have fun ' + player.name + ' !!!');
+    displayMsgInScreen('Have fun ' + player.name + '! Please place a bet.');
     document.getElementById("bank").innerText = player.bank;
-    giveInitialCards();
   }
   else
   {
     displayMsgInScreen('Have a nice day!');
   }
+  buttonAgain.disabled = true;
 }
 
 function resetGame()
@@ -90,12 +98,12 @@ function resetGame()
   playerCardsContainer = document.getElementById('player');
   dealerCardsContainer.innerHTML = null;
   playerCardsContainer.innerHTML = null;
-  disableHitStayButtons(false);
+  disableHitStayButtons(true);
   displayMsgInScreen(player.name + ' welcome back');
   // Enable the bet form, show current bank
   toggleBetForm(false);
   document.getElementById("bank").innerText = player.bank;
-  giveInitialCards();
+  buttonAgain.disabled=true;
 }
 
 
@@ -116,7 +124,6 @@ function giveInitialCards()
 }
 
 /*
-Author: Iris
 Displays a prompt asking to user if he wants to play.
 Returns: boolean.
 */
@@ -132,8 +139,8 @@ function getRandomNumber(TopNumber){
 function getName(){
   return(prompt('Whats your name?'));
 }
+
 /*
-Author: Iris
 Obtain a random card that hasn't been dealt.
 Returns: Card object.
 */
@@ -189,9 +196,7 @@ function pushHand (playerOrDealer){
   newCard = aceValid(newCard, playerOrDealer);
   playerOrDealer.hand.push(newCard);
   playerOrDealer.score =  playerOrDealer.score + newCard.value;
-
   renderCard(playerOrDealer, newCard);
-
 }
 
 
@@ -199,7 +204,6 @@ function pushHand (playerOrDealer){
 function check21(playerOrDealer){
   if(playerOrDealer.score > 21){
     displayMsgInScreen(playerOrDealer.name + ' has lost !');
-
     if(playerOrDealer === dealer){
       // Dealar busted
       updateBank(true, false);
@@ -226,6 +230,7 @@ function check21(playerOrDealer){
   } else{
     return(false);
   }
+  buttonAgain.disabled = false;
 }
 
 // sums up an arrays
@@ -265,11 +270,8 @@ function renderCard(playerOrDealer, cardToRender){
 
 
 function dealerTurn(){
-
   var imgCardBack = document.getElementById('cardBack');
   imgCardBack.parentNode.removeChild(imgCardBack);
- 
-
   do
     pushHand(dealer);
     //wait
@@ -307,27 +309,14 @@ function results(message) {
   }
 }
 
-function askWantsToPlayAgain()
-{
-  var playAgain = confirm('Would You Like To Play Again?');
-  if (playAgain == true) {
-    resetGame();
-  } else {
 
-      // alert('See you later!');
-      displayMsgInScreen('See you later!');
-  }
-}
 function displayMsgInScreen(messageToDisplay)
 {
   var msg;
-  // alert('in displayMessage');
   msg = document.getElementById('messages');
   msg.textContent = messageToDisplay;
-
-
-      displayMsgInScreen('See you later!');
-  }
+    displayMsgInScreen('See you later!');
+}
 
 
 function displayMsgInScreen(messageToDisplay)
@@ -336,5 +325,3 @@ function displayMsgInScreen(messageToDisplay)
   msg = document.getElementById('messages');
   msg.textContent = messageToDisplay;
 }
-
-
