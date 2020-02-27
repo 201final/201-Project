@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-//Iris sent me this code on slack at 1625
-
-=======
->>>>>>> 1303678c9c3fb0fc3c30de33d3f17ca6e00c6bfb
 'use strict'
 // builds new player object
 function NewPlayer(name) {
@@ -69,18 +64,11 @@ function startGame(){
     dealer = new NewDealer();
     player =  new NewPlayer(getName());
     displayMsgInScreen('Have fun ' + player.name + ' !!!');
-<<<<<<< HEAD
-=======
     document.getElementById("bank").innerText = player.bank;
->>>>>>> 1303678c9c3fb0fc3c30de33d3f17ca6e00c6bfb
     giveInitialCards();
   }
   else
   {
-<<<<<<< HEAD
-    // alert('Have a nice day!');
-=======
->>>>>>> 1303678c9c3fb0fc3c30de33d3f17ca6e00c6bfb
     displayMsgInScreen('Have a nice day!');
   }
 }
@@ -92,24 +80,17 @@ function resetGame()
 
   player.hand = [];
   player.score = 0;
-<<<<<<< HEAD
-  //TODO ask for a bet
-=======
   
->>>>>>> 1303678c9c3fb0fc3c30de33d3f17ca6e00c6bfb
   var dealerCardsContainer, playerCardsContainer;
   dealerCardsContainer = document.getElementById('dealerCard');
   playerCardsContainer = document.getElementById('player');
   dealerCardsContainer.innerHTML = null;
   playerCardsContainer.innerHTML = null;
-<<<<<<< HEAD
-=======
   disableHitStayButtons(false);
   displayMsgInScreen(player.name + ' welcome back');
   // Enable the bet form, show current bank
   toggleBetForm(false);
   document.getElementById("bank").innerText = player.bank;
->>>>>>> 1303678c9c3fb0fc3c30de33d3f17ca6e00c6bfb
   giveInitialCards();
 }
 
@@ -183,11 +164,8 @@ function getCard()
   while (cardAlreadyDealt === true);
   return(attemptedCard);
 }
-<<<<<<< HEAD
-=======
 
 
->>>>>>> 1303678c9c3fb0fc3c30de33d3f17ca6e00c6bfb
 //validate ace value. Card dealt needs to pass through this before being rendered.
 function aceValid(cardDealt, indiv){
   if(cardDealt.name === 'Ace'){
@@ -216,15 +194,6 @@ function pushHand (playerOrDealer){
 // checks each hand to see if they have 21
 function check21(playerOrDealer){
   if(playerOrDealer.score > 21){
-<<<<<<< HEAD
-    // results(`${playerOrDealer.name} has lost`); // playerOrDealer function needs to be created still with a message parameter
-    displayMsgInScreen(playerOrDealer.name + ' has lost !');
-    // askWantsToPlayAgain(); //TODO change this to the button
-  } else if(playerOrDealer.score === 21){
-    // results(`${playerOrDealer.name} just hit 21!`);
-    displayMsgInScreen(playerOrDealer.name + '  just hit 21!');
-    // askWantsToPlayAgain();
-=======
     displayMsgInScreen(playerOrDealer.name + ' has lost !');
 
     if(playerOrDealer === dealer){
@@ -247,7 +216,6 @@ function check21(playerOrDealer){
   }else if(dealer.score > player.score){
     displayMsgInScreen('Dealer wins');
     disableHitStayButtons(true);
->>>>>>> 1303678c9c3fb0fc3c30de33d3f17ca6e00c6bfb
   } else{
     return(false);
   }
@@ -286,44 +254,22 @@ function renderCard(playerOrDealer, cardToRender){
   newCardImage.src = cardToRender.image;
   newCardImage.alt = (cardToRender.value + ' ' + cardToRender.suit);
   imgParentContainer.appendChild(newCardImage);
-<<<<<<< HEAD
-  // newCardImage = document.createElement('img');
-  // newCardImage.src = './svg-cards/back.png';
-  // newCardImage.alt = 'card back';
-  // imgParentContainer.appendChild(newCardImage);
-=======
-
->>>>>>> 1303678c9c3fb0fc3c30de33d3f17ca6e00c6bfb
 }
 
 
 function dealerTurn(){
-<<<<<<< HEAD
-  // // // // console.log('dealer turn');
-  // // // var interval = setInterval(function() {
-  // // //   pushHand(dealer);
-  // // //   console.log(check21(dealer), dealer.score);
-  // // //   if (check21(dealer) !== false) {
-  // // //     clearInterval(interval);
-  // // //   }
-  // // // }, 1000);
-=======
 
   var imgCardBack = document.getElementById('cardBack');
   imgCardBack.parentNode.removeChild(imgCardBack);
  
 
->>>>>>> 1303678c9c3fb0fc3c30de33d3f17ca6e00c6bfb
   do
     pushHand(dealer);
     //wait
   while (check21(dealer) === false);
 }
-<<<<<<< HEAD
-=======
 
 
->>>>>>> 1303678c9c3fb0fc3c30de33d3f17ca6e00c6bfb
 document.getElementById("buuton").addEventListener("click", hitButton);
 document.getElementById("buttonStay").addEventListener("click", stayButton);
 document.getElementById("buttonAgain").addEventListener("click", resetGame);
@@ -341,13 +287,7 @@ function disableHitStayButtons(status)
 }
 
 function stayButton() {
-<<<<<<< HEAD
-  console.log('in stay button');
-  // hitButton.disabled = true;
-  // standButton.disabled = true; this does not exist
-=======
   disableHitStayButtons(true);
->>>>>>> 1303678c9c3fb0fc3c30de33d3f17ca6e00c6bfb
   dealerTurn();
 }
 
@@ -366,7 +306,7 @@ function askWantsToPlayAgain()
   if (playAgain == true) {
     resetGame();
   } else {
-<<<<<<< HEAD
+
       // alert('See you later!');
       displayMsgInScreen('See you later!');
   }
@@ -377,11 +317,11 @@ function displayMsgInScreen(messageToDisplay)
   // alert('in displayMessage');
   msg = document.getElementById('messages');
   msg.textContent = messageToDisplay;
-}
-=======
+
+
       displayMsgInScreen('See you later!');
   }
-}
+
 
 function displayMsgInScreen(messageToDisplay)
 {
@@ -390,8 +330,4 @@ function displayMsgInScreen(messageToDisplay)
   msg.textContent = messageToDisplay;
 }
 
-<<<<<<< HEAD
->>>>>>> 1303678c9c3fb0fc3c30de33d3f17ca6e00c6bfb
-=======
 
->>>>>>> 28702ca37cce5ba72af0148e7bb442d7ea143d89
