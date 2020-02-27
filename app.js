@@ -88,8 +88,7 @@ function resetGame()
   playerCardsContainer = document.getElementById('player');
   dealerCardsContainer.innerHTML = null;
   playerCardsContainer.innerHTML = null;
-  buuton.disabled = false;
-  buttonStay.disabled = false;
+  disableHitStayButtons(false);
   displayMsgInScreen(player.name + ' welcome back');
   // Enable the bet form, show current bank
   toggleBetForm(false);
@@ -106,6 +105,13 @@ function giveInitialCards()
   pushHand(player);
   check21(player);
   pushHand(dealer);
+  // display one dealer's card upside down. 
+  var imgParentContainer = document.getElementById('dealerCard');
+  var newCardImage = document.createElement('img');
+  newCardImage.src = './svg-cards/back.png';
+  newCardImage.alt = 'card back';
+  newCardImage.id = 'cardBack';
+  imgParentContainer.appendChild(newCardImage);
 }
 
 /*
@@ -218,11 +224,11 @@ function check21(playerOrDealer){
   } 
 }
     displayMsgInScreen(playerOrDealer.name + ' has lost !');
-    // endGame();
+    disableHitStayButtons(true);
   } else if(playerOrDealer.score === 21){
     // results(`${playerOrDealer.name} just hit 21!`);
     displayMsgInScreen(playerOrDealer.name + '  just hit 21!');
-    // endGame();
+    disableHitStayButtons(true);
   } else{
     return(false);
   }
@@ -279,10 +285,11 @@ function dealerTurn(){
   // // //     clearInterval(interval);
   // // //   }
   // // // }, 1000);
-
+  var imgCardBack = document.getElementById('cardBack');
+  imgCardBack.parentNode.removeChild(imgCardBack);
+  // document.removeChild(imgCardBack);
   do
     pushHand(dealer);
-    //wait
   while (check21(dealer) === false);
 }
 
@@ -297,9 +304,16 @@ function hitButton(event) {
   check21(player);
 }
 
+function disableHitStayButtons(status)
+{
+  buuton.disabled = status;
+  buttonStay.disabled = status;
+}
+
 function stayButton() {
-  buuton.disabled = true;
-  buttonStay.disabled = true;
+  // buuton.disabled = true;
+  // buttonStay.disabled = true;
+  disableHitStayButtons(true);
   dealerTurn();
 }
 
