@@ -39,7 +39,7 @@ width: 700px;
 }
 #buuton{
   position: fixed;
-  bottom: 400px;
+  bottom: 700px;
   width:0px;
   height: 0px;
   left: 100px;
@@ -122,7 +122,7 @@ img{
   float: none;
   display: block;
   margin-top: -620px;
-  margin-left: 800px;
+  margin-left: 1100px;
   margin-right: auto;
   position: relative;
   color:#9E003E;
@@ -131,7 +131,7 @@ img{
 #buttonAgain{
   float: none;
   display: block;
-  margin-left: 600px;
+  margin-left: 800px;
   margin-right: auto;
   position: relative;
   color:#9E003E;
