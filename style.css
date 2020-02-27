@@ -1,5 +1,6 @@
 body{
-  background-color:#009E60;
+  background-image: url("svg-cards/simple/felt.jpg");
+ background-color: #cccccc;
 }
 h1{
   position:static;
@@ -7,7 +8,7 @@ h1{
   font-size:50px;
   margin-left: auto;
     margin-right: auto;
-    color:#9E003E;
+    color:#E11515;
 }
 h3{
   position:static;
@@ -81,7 +82,7 @@ figure{
 #secTwo{
   position: relative;
   top: -100px;
-  color: #9E003E;
+  color: #E11515;
   font-size: 20px;
 }
 
