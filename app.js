@@ -1,5 +1,5 @@
-'use strict'
 
+'use strict'
 // builds new player object
 function NewPlayer(name) {
   this.name = name;
@@ -7,12 +7,11 @@ function NewPlayer(name) {
   this.score = 0;
   this.bet = 0;
 }
-
-
 function NewDealer(){
   this.name = 'Dealer';
   this.hand = [];
   this.score = 0;
+
 }
 
 // GLOBAL VARIABLES
@@ -49,7 +48,9 @@ function resetGame()
   playerCardsContainer = document.getElementById('player');
   dealerCardsContainer.innerHTML = null;
   playerCardsContainer.innerHTML = null;
-
+  buuton.disabled = false;
+  buttonStay.disabled = false;
+  displayMsgInScreen(player.name + ' welcome back');
   giveInitialCards();
 }
 
@@ -73,7 +74,6 @@ function askUserIfWantsToPlay()
 {
   return( confirm('Hi there! \nDo you want to play BlackJack?'));
 }
-
 
 function getRandomNumber(TopNumber){
   return(Math.floor(Math.random() * TopNumber));
@@ -119,7 +119,11 @@ function getCard()
   return(attemptedCard);
 }
 
+
+//validate ace value. Card dealt needs to pass through this before being rendered.
 function aceValid(cardDealt, indiv){
+  
+
 
   if(cardDealt.name === 'Ace'){
     if(indiv.score >= 11){
@@ -138,23 +142,31 @@ function pushHand (playerOrDealer){
   newCard = aceValid(newCard, playerOrDealer);
   playerOrDealer.hand.push(newCard);
   playerOrDealer.score =  playerOrDealer.score + newCard.value;
+
   renderCard(playerOrDealer, newCard);
+
 }
+
 
 // checks ea hand to see if they have 21
 function check21(playerOrDealer){
   if(playerOrDealer.score > 21){
     // results(`${playerOrDealer.name} has lost`); // playerOrDealer function needs to be created still with a message parameter
     displayMsgInScreen(playerOrDealer.name + ' has lost !');
-    // askWantsToPlayAgain(); //TODO change this to the button
+    // endGame();
   } else if(playerOrDealer.score === 21){
     // results(`${playerOrDealer.name} just hit 21!`);
     displayMsgInScreen(playerOrDealer.name + '  just hit 21!');
-    // askWantsToPlayAgain();
+    // endGame();
   } else{
     return(false);
   }
 }
+
+// function endGame()
+// {
+
+// }
 
 // sums up an arrays
 function sumArr(arr){
@@ -171,7 +183,6 @@ function sumArr(arr){
 function saveData(key, data){
   localStorage.setItem(key, JSON.stringify(data));
 }
-
 // saves user name to local storage
 saveData('name', NewPlayer.name)  //TODO: check if we are going to move this to a function
 
@@ -216,9 +227,9 @@ function dealerTurn(){
 }
 
 
-document.getElementById("buttonHit").addEventListener("click", hitButton);
-
+document.getElementById("buuton").addEventListener("click", hitButton);
 document.getElementById("buttonStay").addEventListener("click", stayButton);
+document.getElementById("buttonAgain").addEventListener("click", resetGame);
 
 
 function hitButton(event) {
@@ -227,8 +238,8 @@ function hitButton(event) {
 }
 
 function stayButton() {
-  // hitButton.disabled = true;
-  // standButton.disabled = true; this does not exist
+  buuton.disabled = true;
+  buttonStay.disabled = true;
   dealerTurn();
 }
 
@@ -241,7 +252,7 @@ function results(message) {
   }
 }
 
-function askWantsToPlayAgain()
+function askWantsToPlayAgain() // TODO delete this
 {
   var playAgain = confirm('Would You Like To Play Again?');
   if (playAgain == true) {

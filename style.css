@@ -9,6 +9,14 @@ h1{
     margin-right: auto;
     color:#9E003E;
 }
+h3{
+  position:static;
+  text-align: center;
+  font-size:25px;
+  margin-left: auto;
+    margin-right: auto;
+    color:black;
+}
 #chipsLeft{
   position: absolute; left: 0%;
   width:200px;
@@ -18,30 +26,34 @@ h1{
   position: absolute; right: 0%;
   width:200px;
 }
+#dealerCard{
+  position: relative;
+  top: 150px;
+  left: 200px;
+}
 #dealerHand{
-position: relative;
-margin-bottom: -550px;
+  position: relative;
+height: 500px;
+width: 700px;
+}
+#buuton{
+  position: relative;
+  bottom: -150px;
+  width:0px;
+  height: 0px;
+  left: 100px;
+  bottom: 40px;
+}
+#deeck{
+  position: relative;
+  width: 300px;
+  top: -73px;
+  right: 100px;
 }
 #deckImg{
   width:250px;
   margin-top: 150px;
   background-image: none;
-}
-#buttonHit{
-  position:relative;
-  outline: none;
-  top: -450px;
-  width: 225px;
-  height: 120px;
-  background-color: transparent;
-  /* border: none; */
-  -ms-transform: skewX(-20deg);
-  -webkit-transform: skewX(-20deg);
-  transform: skewX(-20deg);
-  -webkit-transform: rotate(20deg); 
-  transform: rotate(20deg);
-  color:#9E003E;
-  font-size: 50px;
 }
 figure{
   display: block;
@@ -64,46 +76,41 @@ figure{
   width: 150px;
 }
 h2{
-  text-align: center;
   color:#9E003E;
 }
 #playerCard{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  padding-left: 650px;
   position: relative;
-  top:-250px;
+  height: 500px;
+  width: 600px;
+ /* bottom: -600px; */
+ float: right;
+ top: -500px;
+}
+img{
+  width: 150px;
 }
 #player{
+  float: none;
   top: 28px;
-padding-left: 20px;
-}
-#imgCardOne{
-  padding-left: 5px;
-  padding-right: 10px;
-  width: 150px;
-}
-#imgCardTwo{
-  padding-left: 10px;
-  padding-right: 10px;
-  width: 150px;
+  padding-right: 300px;
 }
 #buttonStay{
+  float: none;
   display: block;
   margin-top: 20px;
-  margin-left: auto;
+  margin-left: 800px;
   margin-right: auto;
   position: relative;
   color:#9E003E;
   font-size: 20px;
 }
-h3{
-  position:static;
-  text-align: center;
-  font-size:25px;
-  margin-left: auto;
-    margin-right: auto;
-    color:black;
+#buttonAgain{
+  float: none;
+  display: block;
+  margin-left: 600px;
+  margin-right: auto;
+  position: relative;
+  color:#9E003E;
+  font-size: 20px;
+  bottom: 27px;
 }
