@@ -28,7 +28,7 @@ h3{
 }
 #dealerCard{
   position: relative;
-  top: 150px;
+  top: 50px;
   left: 200px;
 }
 #dealerHand{
@@ -64,16 +64,19 @@ figure{
   top: -300px;
 }
 #dealerCard1{
+ position: absolute;
  padding-left: 5px;
  padding-right: 10px;
  height:auto;
  width: 150px;
+ 
 }
 #dealerCard2{
   padding-left: 10px;
   padding-right: 10px;
   height:auto;
   width: 150px;
+  
 }
 h2{
   color:#9E003E;
@@ -86,18 +89,22 @@ h2{
  float: right;
  top: -500px;
 }
+
 img{
   width: 150px;
+  
 }
+
 #player{
   float: none;
   top: 28px;
   padding-right: 300px;
 }
+
 #buttonStay{
   float: none;
   display: block;
-  margin-top: 20px;
+  margin-top: -500px;
   margin-left: 800px;
   margin-right: auto;
   position: relative;

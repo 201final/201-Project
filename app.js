@@ -195,6 +195,7 @@ function pushHand (playerOrDealer){
 function check21(playerOrDealer){
   if(playerOrDealer.score > 21){
     displayMsgInScreen(playerOrDealer.name + ' has lost !');
+
     if(playerOrDealer === dealer){
       // Dealar busted
       updateBank(true, false);
@@ -211,6 +212,9 @@ function check21(playerOrDealer){
   }else if(dealer.score > player.score){
     displayMsgInScreen('Dealer wins');
     updateBank(false, false)
+    disableHitStayButtons(true);
+  }else if(dealer.score > player.score){
+    displayMsgInScreen('Dealer wins');
     disableHitStayButtons(true);
   } else{
     return(false);
