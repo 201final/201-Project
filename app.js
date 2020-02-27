@@ -195,9 +195,23 @@ function pushHand (playerOrDealer){
 function check21(playerOrDealer){
   if(playerOrDealer.score > 21){
     displayMsgInScreen(playerOrDealer.name + ' has lost !');
+
+    if(playerOrDealer === dealer){
+      // Dealar busted
+      updateBank(true, false);
+    } else {
+      // Player busted
+      updateBank(false, false);
+    }
     disableHitStayButtons(true);
   } else if(playerOrDealer.score === 21){
     displayMsgInScreen(playerOrDealer.name + '  just hit 21!');
+    updateBank(true, player.hand.length === 2)
+    updateBank(false, false);
+    disableHitStayButtons(true);
+  }else if(dealer.score > player.score){
+    displayMsgInScreen('Dealer wins');
+    updateBank(false, false)
     disableHitStayButtons(true);
   }else if(dealer.score > player.score){
     displayMsgInScreen('Dealer wins');
@@ -302,4 +316,5 @@ function displayMsgInScreen(messageToDisplay)
   msg = document.getElementById('messages');
   msg.textContent = messageToDisplay;
 }
+
 
