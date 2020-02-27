@@ -34,7 +34,7 @@ h3{
 
 #dealerCard{
   position: relative;
-  top: 150px;
+  top: 50px;
   left: 200px;
 }
 
@@ -115,7 +115,7 @@ img{
 #buttonStay{
   float: none;
   display: block;
-  margin-top: 20px;
+  margin-top: -500px;
   margin-left: 800px;
   margin-right: auto;
   position: relative;
