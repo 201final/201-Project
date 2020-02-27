@@ -32,6 +32,11 @@ h3{
 
 }
 
+#dealerCard{
+  position: relative;
+  top: 150px;
+  left: 200px;
+}
 
 #dealerHand{
   position: relative;
@@ -45,7 +50,7 @@ width: 700px;
   width:0px;
   height: 0px;
   left: 100px;
-  bottom: -200px;
+  bottom: 40px;
 }
 
 #deeck{
