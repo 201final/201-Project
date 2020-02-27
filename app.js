@@ -30,7 +30,6 @@ function startGame(){
   }
   else
   {
-    // alert('Have a nice day!');
     displayMsgInScreen('Have a nice day!');
   }
 }
@@ -42,27 +41,32 @@ function resetGame()
 
   player.hand = [];
   player.score = 0;
-  //TODO ask for a bet
+  
   var dealerCardsContainer, playerCardsContainer;
   dealerCardsContainer = document.getElementById('dealerCard');
   playerCardsContainer = document.getElementById('player');
   dealerCardsContainer.innerHTML = null;
   playerCardsContainer.innerHTML = null;
-  buuton.disabled = false;
-  buttonStay.disabled = false;
+  disableHitStayButtons(false);
   displayMsgInScreen(player.name + ' welcome back');
   giveInitialCards();
 }
 
-/*
-Gives 2 cards for the player and 1 for the dealer at the beggining of the game.
-*/
+
+// Gives 2 cards for the player and 1 for the dealer at the beggining of the game.
 function giveInitialCards()
 {
   pushHand(player);
   pushHand(player);
   check21(player);
   pushHand(dealer);
+  // display one dealer's card upside down. 
+  var imgParentContainer = document.getElementById('dealerCard');
+  var newCardImage = document.createElement('img');
+  newCardImage.src = './svg-cards/back.png';
+  newCardImage.alt = 'card back';
+  newCardImage.id = 'cardBack';
+  imgParentContainer.appendChild(newCardImage);
 }
 
 /*
@@ -122,9 +126,6 @@ function getCard()
 
 //validate ace value. Card dealt needs to pass through this before being rendered.
 function aceValid(cardDealt, indiv){
-  
-
-
   if(cardDealt.name === 'Ace'){
     if(indiv.score >= 11){
       cardDealt.value = 1;
@@ -151,26 +152,18 @@ function pushHand (playerOrDealer){
 // checks ea hand to see if they have 21
 function check21(playerOrDealer){
   if(playerOrDealer.score > 21){
-    // results(`${playerOrDealer.name} has lost`); // playerOrDealer function needs to be created still with a message parameter
     displayMsgInScreen(playerOrDealer.name + ' has lost !');
-    // endGame();
+    disableHitStayButtons(true);
   } else if(playerOrDealer.score === 21){
-    // results(`${playerOrDealer.name} just hit 21!`);
     displayMsgInScreen(playerOrDealer.name + '  just hit 21!');
-    // endGame();
   }
     else if(dealer.score > player.score){
       displayMsgInScreen('Dealer wins');
-    
+      disableHitStayButtons(true);
   } else{
     return(false);
   }
 }
-
-// function endGame()
-// {
-
-// }
 
 // sums up an arrays
 function sumArr(arr){
@@ -206,19 +199,17 @@ function renderCard(playerOrDealer, cardToRender){
   newCardImage.alt = (cardToRender.value + ' ' + cardToRender.suit);
   imgParentContainer.appendChild(newCardImage);
 
-  // newCardImage = document.createElement('img');
-  // newCardImage.src = './svg-cards/back.png';
-  // newCardImage.alt = 'card back';
-  // imgParentContainer.appendChild(newCardImage);
-
 }
 
 
 function dealerTurn(){
 
+  var imgCardBack = document.getElementById('cardBack');
+  imgCardBack.parentNode.removeChild(imgCardBack);
+ 
+
   do
     pushHand(dealer);
-    //wait
   while (check21(dealer) === false);
 }
 
@@ -233,9 +224,14 @@ function hitButton(event) {
   check21(player);
 }
 
+function disableHitStayButtons(status)
+{
+  buuton.disabled = status;
+  buttonStay.disabled = status;
+}
+
 function stayButton() {
-  buuton.disabled = true;
-  buttonStay.disabled = true;
+  disableHitStayButtons(true);
   dealerTurn();
 }
 
@@ -248,13 +244,12 @@ function results(message) {
   }
 }
 
-function askWantsToPlayAgain() // TODO delete this
+function askWantsToPlayAgain()
 {
   var playAgain = confirm('Would You Like To Play Again?');
   if (playAgain == true) {
     resetGame();
   } else {
-      // alert('See you later!');
       displayMsgInScreen('See you later!');
   }
 }
@@ -262,7 +257,6 @@ function askWantsToPlayAgain() // TODO delete this
 function displayMsgInScreen(messageToDisplay)
 {
   var msg;
-  // alert('in displayMessage');
   msg = document.getElementById('messages');
   msg.textContent = messageToDisplay;
 }
