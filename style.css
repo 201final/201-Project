@@ -37,13 +37,13 @@ height: 500px;
 width: 700px;
 }
 #buuton{
-  position: relative;
-  bottom: -150px;
+  position: fixed;
+  bottom: 400px;
   width:0px;
   height: 0px;
   left: 100px;
-  bottom: 40px;
 }
+
 #deeck{
   position: relative;
   width: 300px;
@@ -76,11 +76,21 @@ figure{
   padding-right: 10px;
   height:auto;
   width: 150px;
-  
 }
+
+#secTwo{
+  position: relative;
+  top: -100px;
+}
+
+form{
+  width: 305px;
+}
+
 h2{
   color:#9E003E;
 }
+
 #playerCard{
   position: relative;
   height: 500px;
@@ -97,14 +107,14 @@ img{
 
 #player{
   float: none;
-  top: 28px;
+  top: -65px;
   padding-right: 300px;
 }
 
 #buttonStay{
   float: none;
   display: block;
-  margin-top: -500px;
+  margin-top: -620px;
   margin-left: 800px;
   margin-right: auto;
   position: relative;
