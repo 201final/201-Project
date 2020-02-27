@@ -31,6 +31,10 @@ function validateBet(){
     alert("Bet must be a multiple of 100");
     return false;
   }
+  if(betValue > player.bank){
+    alert('Not enough funds');
+    return false;
+  }
   // Once we've passed validation, disable the form and place the bet
   toggleBetForm(true);
   placeBet(betValue);
@@ -206,8 +210,11 @@ function check21(playerOrDealer){
     disableHitStayButtons(true);
   } else if(playerOrDealer.score === 21){
     displayMsgInScreen(playerOrDealer.name + '  just hit 21!');
-    updateBank(true, player.hand.length === 2)
-    updateBank(false, false);
+      if(playerOrDealer === dealer){
+        updateBank(false,false);
+      }else{
+        updateBank(true, player.hand.length === 2);
+      }
     disableHitStayButtons(true);
   }else if(dealer.score > player.score){
     displayMsgInScreen('Dealer wins');
