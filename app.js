@@ -158,6 +158,10 @@ function check21(playerOrDealer){
     // results(`${playerOrDealer.name} just hit 21!`);
     displayMsgInScreen(playerOrDealer.name + '  just hit 21!');
     // endGame();
+  }
+    else if(dealer.score > player.score){
+      displayMsgInScreen('Dealer wins');
+    
   } else{
     return(false);
   }
@@ -211,14 +215,6 @@ function renderCard(playerOrDealer, cardToRender){
 
 
 function dealerTurn(){
-  // // // // console.log('dealer turn');
-  // // // var interval = setInterval(function() {
-  // // //   pushHand(dealer);
-  // // //   console.log(check21(dealer), dealer.score);
-  // // //   if (check21(dealer) !== false) {
-  // // //     clearInterval(interval);
-  // // //   }
-  // // // }, 1000);
 
   do
     pushHand(dealer);
