@@ -1,7 +1,6 @@
 body{
   background-color:#009E60;
 }
-
 h1{
   position:static;
   text-align: center;
@@ -10,7 +9,6 @@ h1{
     margin-right: auto;
     color:#9E003E;
 }
-
 h3{
   position:static;
   text-align: center;
@@ -19,32 +17,50 @@ h3{
     margin-right: auto;
     color:black;
 }
-
 #chipsLeft{
   position: absolute; left: 0%;
   width:200px;
   
 }
-
 #chipsRight{
   position: absolute; right: 0%;
   width:200px;
-
 }
-
-
+#dealerCard{
+  position: relative;
+  top: 150px;
+  left: 200px;
+}
 #dealerHand{
+<<<<<<< HEAD
 position: relative;
 margin-bottom: -550px;
 
+=======
+  position: relative;
+height: 500px;
+width: 700px;
 }
-
+#buuton{
+  position: relative;
+  bottom: -150px;
+  width:0px;
+  height: 0px;
+  left: 100px;
+  bottom: 40px;
+}
+#deeck{
+  position: relative;
+  width: 300px;
+  top: -73px;
+  right: 100px;
+>>>>>>> 17f0bfd47faaacb78a871cd098bd8c85eacbb790
+}
 #deckImg{
   width:250px;
   margin-top: 150px;
   background-image: none;
 }
-
 figure{
   display: block;
   margin-left: auto;
@@ -53,11 +69,14 @@ figure{
   position: relative;
   top: -300px;
 }
+<<<<<<< HEAD
 
 .d3{
   transform-style: preserve-3d;
 }
 
+=======
+>>>>>>> 17f0bfd47faaacb78a871cd098bd8c85eacbb790
 #dealerCard1{
  position: absolute;
  padding-left: 5px;
@@ -66,9 +85,12 @@ figure{
  width: 150px;
  
 }
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 17f0bfd47faaacb78a871cd098bd8c85eacbb790
 #dealerCard2{
   padding-left: 10px;
   padding-right: 10px;
@@ -76,11 +98,9 @@ figure{
   width: 150px;
   
 }
-
 h2{
   color:#9E003E;
 }
-
 #playerCard{
   position: relative;
   height: 500px;
@@ -89,17 +109,14 @@ h2{
  float: right;
  top: -500px;
 }
-
 img{
   width: 150px;
 }
-
 #player{
   float: none;
   top: 28px;
   padding-right: 300px;
 }
-
 #buttonStay{
   float: none;
   display: block;
@@ -110,7 +127,6 @@ img{
   color:#9E003E;
   font-size: 20px;
 }
-
 #buttonAgain{
   float: none;
   display: block;
