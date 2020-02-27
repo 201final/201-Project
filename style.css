@@ -81,14 +81,20 @@ figure{
 #secTwo{
   position: relative;
   top: -100px;
+  color: #9E003E;
+  font-size: 20px;
 }
 
 form{
-  width: 305px;
+  width: 330px;
+}
+
+#placeBetBtn{
+  color: #9E003E;
+  font-size: 15px;
 }
 
 h2{
-  color:#9E003E;
 }
 
 #playerCard{
