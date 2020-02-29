@@ -233,17 +233,6 @@ function check21(playerOrDealer){
   buttonAgain.disabled = false;
 }
 
-// sums up an arrays
-function sumArr(arr){
-  var i = 0;
-  var ttl = 0;
-  while (i < arr.length){
-    ttl = ttl + arr[i];
-    i++;
-  }
-  return(ttl);
-}
-
 // save to local storage function
 function saveData(key, data){
   localStorage.setItem(key, JSON.stringify(data));
@@ -317,12 +306,4 @@ function displayMsgInScreen(messageToDisplay)
   msg = document.getElementById('messages');
   msg.textContent = messageToDisplay;
     displayMsgInScreen('See you later!');
-}
-
-
-function displayMsgInScreen(messageToDisplay)
-{
-  var msg;
-  msg = document.getElementById('messages');
-  msg.textContent = messageToDisplay;
 }
