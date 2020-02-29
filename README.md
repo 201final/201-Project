@@ -5,7 +5,7 @@
 * Alex
 * Iris
 
-
+https://github.com/hayeah/playing-cards-assets is where we got the images
 # Users Stories
 
 1. **Play Blackjack** - As a `user` with wifi I want to access a web browser to play basic blackjack so that I don't have to have physical cards

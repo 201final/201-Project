@@ -233,17 +233,6 @@ function check21(playerOrDealer){
   buttonAgain.disabled = false;
 }
 
-// sums up an arrays
-function sumArr(arr){
-  var i = 0;
-  var ttl = 0;
-  while (i < arr.length){
-    ttl = ttl + arr[i];
-    i++;
-  }
-  return(ttl);
-}
-
 // save to local storage function
 function saveData(key, data){
   localStorage.setItem(key, JSON.stringify(data));
@@ -252,6 +241,7 @@ function saveData(key, data){
 saveData('name', NewPlayer.name)  //TODO: check if we are going to move this to a function
 
 // render function. elementId has to be a string of playerCard or dealerCard.
+//https://github.com/hayeah/playing-cards-assets is where we got the images
 function renderCard(playerOrDealer, cardToRender){
   var imgParentContainer;
   if (playerOrDealer.name === 'Dealer')
@@ -316,12 +306,4 @@ function displayMsgInScreen(messageToDisplay)
   msg = document.getElementById('messages');
   msg.textContent = messageToDisplay;
     displayMsgInScreen('See you later!');
-}
-
-
-function displayMsgInScreen(messageToDisplay)
-{
-  var msg;
-  msg = document.getElementById('messages');
-  msg.textContent = messageToDisplay;
 }

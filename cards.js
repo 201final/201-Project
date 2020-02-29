@@ -6,7 +6,7 @@ var Card = function(value, suit, name, image){
     this.image = image;
     deck.push(this);
 }
-
+//https://github.com/hayeah/playing-cards-assets is where we got the images
 var aceOfSpades = new Card(1||11, 'Spades', 'Ace', './svg-cards/ace_of_spades.svg');
 var aceOfHearts = new Card(1||11, 'Hearts', 'Ace', './svg-cards/ace_of_hearts.svg');
 var aceOfDiamonds = new Card(1||11, 'Diamonds', 'Ace', './svg-cards/ace_of_diamonds.svg');
