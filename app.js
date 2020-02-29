@@ -307,3 +307,10 @@ function displayMsgInScreen(messageToDisplay)
   msg.textContent = messageToDisplay;
     displayMsgInScreen('See you later!');
 }
+
+function displayMsgInScreen(messageToDisplay)
+{
+  var msg;
+  msg = document.getElementById('messages');
+  msg.textContent = messageToDisplay;
+}
