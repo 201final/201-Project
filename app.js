@@ -252,6 +252,7 @@ function saveData(key, data){
 saveData('name', NewPlayer.name)  //TODO: check if we are going to move this to a function
 
 // render function. elementId has to be a string of playerCard or dealerCard.
+//https://github.com/hayeah/playing-cards-assets is where we got the images
 function renderCard(playerOrDealer, cardToRender){
   var imgParentContainer;
   if (playerOrDealer.name === 'Dealer')
