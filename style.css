@@ -38,8 +38,8 @@ height: 500px;
 width: 700px;
 }
 #buuton{
-  position: fixed;
-  bottom: 700px;
+  position: absolute;
+  top: 200px;
   width:0px;
   height: 0px;
   left: 100px;
